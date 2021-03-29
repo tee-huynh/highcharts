@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="container"></div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+    Highcharts.chart('container', {
+
+    title: {
+        text: 'GDP Decreases Sharply in 2020 and Rebounds'
+    },
+
+    yAxis: [{ // Primary yAxis
+        format: '{value}%',
+        title: {
+            text: 'Canadian Annual GDP Growth Rate'
+        },
+        min: -8,
+        max: 6,
+        tickInterval: 2,
+        opposite: true
+
+    }, { // Secondary yAxis
+        gridLineWidth: 0,
+        title: {
+            text: 'Trillion Real 2012 C$'
+        },
+        min: 1.80,
+        max: 2.30,
+        tickInterval: 0.1
+    }],
+
+    xAxis: {
+        accessibility: {
+            rangeDescription: 'Year'
+        }
+    },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2018
+        }
+    },
+
+    series: [{
+        name: 'Total GDP (Value)',
+        data: [-0.09, -0.2, -3.7, -0.95, 0.8, 2.2, 3, 3.8],
+        color: '#FFBE4B'
+    }, {
+        name: 'Canadian GDP Growth Rate (Right Axis)',
+        data: [2.2, 1.8, -5, 3.9, 2.6, 2.2, 2.3, 2.1],
+        color: '#054169'
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+    });
+</script>
+
+</body>
+</html>
