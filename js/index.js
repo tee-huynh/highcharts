@@ -147,3 +147,88 @@ Highcharts.chart('figure-r-2', {
         color: '#054169'
     }]
 });
+
+Highcharts.chart('figure-r-3', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'End-Use Energy Consumption Peaks in 2019 and Declines over the Long Term in the Evolving Scenario'
+    },
+    xAxis: {
+        categories: ['2005', '2010', '2015', '2020', '2025', '2030', '2035', '2040', '2045', '2050'],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Petajoules (PJ)'
+        }
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                enabled: false
+            }
+        }
+    },
+    series: [{
+        name: 'Transportation',
+        data: [10500, 10100, 11000, 11500, 11900, 11500, 11000, 10500, 10200, 9900],
+        color: '#871455'
+    },{
+        name: 'Industrial',
+        data: [8000, 7800, 8500, 9000, 8900, 8800, 8700, 8400, 8000, 7800],
+        color: '#FF821E'
+    },{
+        name: 'Commercial',
+        data: [3000, 2900, 3000, 3100, 3000, 3000, 3000, 3000, 3000, 3000],
+        color: '#054169'
+    },{
+        name: 'Residential',
+        data: [1700, 1700, 1700, 1900, 1700, 1700, 1700, 1700, 1700, 1700],
+        color: '#FFBE4B'
+    }]
+});
+
+Highcharts.chart('figure-r-3-b', {
+    chart: {
+        type: 'column'
+      },
+    title: {
+        text: 'Short-Term Year-Over-Year Change in End-Use Demand (PJ)'
+    },
+    xAxis: {
+        categories: ['2019', '2020', '2021', '2022', '2023']
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
+    },
+    series: [{
+        name: 'Residential',
+        data: [50, 100, -100, -10, -5],
+        color: '#FFBE4B'
+    }, {
+        name: 'Commercial',
+        data: [100, -210, 180, 5, -10],
+        color: '#054169'
+    }, {
+        name: 'Industrial',
+        data: [-50, -550, 420, 50, -15],
+        color: '#FF821E'
+    }, {
+        name: 'Transportation',
+        data: [-75, -900, 610, 175, -20],
+        color: '#871455'
+    }]
+});
