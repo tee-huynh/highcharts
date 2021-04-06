@@ -1,3 +1,5 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
 #navbar {
     overflow: hidden;
     z-index: 1;

@@ -27,15 +27,23 @@ $.fn.isInViewport = function() {
 function myFunction() {
     var macroeconomicBttn = document.getElementById("macroeconomics-bttn");
     var energyDemandBttn = document.getElementById("energy-demand-bttn");
+    var crudeOilBttn = document.getElementById("crude-oil-bttn");
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky")
         if (navbar.classList.contains("sticky") && $('#macroeconomics').isInViewport()){
             macroeconomicBttn.classList.add("active");
             energyDemandBttn.classList.remove("active");
+            crudeOilBttn.classList.remove("active");
         }
         else if (navbar.classList.contains("sticky") && $('#energy-demand').isInViewport()){
             energyDemandBttn.classList.add("active");
             macroeconomicBttn.classList.remove("active");
+            crudeOilBttn.classList.remove("active");
+        }
+        else if (navbar.classList.contains("sticky") && $('#crude-oil').isInViewport()){
+            energyDemandBttn.classList.remove("active");
+            macroeconomicBttn.classList.remove("active");
+            crudeOilBttn.classList.add("active");
         }
     } 
     else {
@@ -43,6 +51,7 @@ function myFunction() {
         var macroeconomicBttn = document.getElementById("macroeconomics-bttn");
         macroeconomicBttn.classList.remove("active");
         energyDemandBttn.classList.remove("active");
+        crudeOilBttn.classList.remove("active");
     }
 }
 
@@ -232,3 +241,267 @@ Highcharts.chart('figure-r-3-b', {
         color: '#871455'
     }]
 });
+
+
+const figureR4 = Highcharts.chart('figure-r-4', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'End-Use Energy Consumption Peaks in 2019 and Declines over the Long Term in the Evolving Scenario'
+    },
+    xAxis: {
+        categories: ['2005', '2010', '2015', '2020', '2025', '2030', '2035', '2040', '2045', '2050'],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Petajoules (PJ)'
+        }
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                enabled: false
+            }
+        }
+    },
+    series: [{
+        name: 'Other',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        color: '#A0A0A1'
+    },{
+        name: 'Biofuels',
+        data: [100, 200, 100, 100, 100, 100, 100, 120, 100, 100],
+        color: '#1D7131'
+    },{
+        name: 'RPPs and NGLs',
+        data: [100, 200, 100, 100, 50, 25, 25, 20, 15, 20],
+        color: '#ED789C'
+    },{
+        name: 'Natural Gas',
+        data: [600, 700, 600, 800, 700, 650, 600, 550, 525, 525],
+        color: '#7C1933'
+    },{
+        name: 'Electricity',
+        data: [500, 600, 600, 700, 700, 750, 775, 800, 850, 850],
+        color: '#E4445E'
+    },{
+        name: 'Diesel',
+        data: [0],
+        color: '#9D4E1D'
+    },{ 
+        name: 'Gasoline',
+        data: [0],
+        color: '#EA751F'
+    }]
+});
+
+var select = document.getElementById('select');
+
+function getType() {
+    switch (select.value) {
+        case 'commercial':
+            figureR4.update({
+                series: [{
+                    name: 'Other',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    color: '#A0A0A1'
+                },{
+                    name: 'Biofuels',
+                    data: [0, 0, 0, 0, 100, 100, 100, 120, 100, 100],
+                    color: '#1D7131'
+                },{
+                    name: 'RPPs and NGLs',
+                    data: [100, 200, 100, 10, 50, 25, 25, 20, 15, 20],
+                    color: '#ED789C'
+                },{
+                    name: 'Natural Gas',
+                    data: [100, 700, 600, 400, 700, 650, 600, 550, 525, 525],
+                    color: '#7C1933'
+                },{
+                    name: 'Electricity',
+                    data: [500, 600, 600, 400, 700, 750, 775, 800, 850, 850],
+                    color: '#E4445E'
+                },{
+                    name: 'Diesel',
+                    data: [0],
+                    color: '#9D4E1D'
+                },{ 
+                    name: 'Gasoline',
+                    data: [0],
+                    color: '#EA751F'
+                }]
+            });
+          break;
+          case 'industrial':
+            figureR4.update({
+                series: [{
+                    name: 'Other',
+                    data: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+                    color: '#A0A0A1'
+                },{
+                    name: 'Biofuels',
+                    data: [100, 200, 100, 100, 100, 100, 100, 120, 100, 100],
+                    color: '#1D7131'
+                },{
+                    name: 'RPPs and NGLs',
+                    data: [100, 200, 100, 100, 50, 25, 25, 20, 15, 20],
+                    color: '#ED789C'
+                },{
+                    name: 'Natural Gas',
+                    data: [600, 700, 600, 800, 700, 650, 600, 550, 525, 525],
+                    color: '#7C1933'
+                },{
+                    name: 'Electricity',
+                    data: [500, 600, 600, 700, 700, 750, 775, 800, 850, 850],
+                    color: '#E4445E'
+                },{
+                    name: 'Diesel',
+                    data: [0],
+                    color: '#9D4E1D'
+                },{ 
+                    name: 'Gasoline',
+                    data: [0],
+                    color: '#EA751F'
+                }]
+            });
+            break;
+            case 'transportation':
+            figureR4.update({
+                series: [{
+                    name: 'Electric',
+                    data: [0, 0, 0, 0, 25, 50, 100, 125, 150, 200],
+                    color: '#E4445E'
+                },{
+                    name: 'Hydrogen',
+                    data: [0, 0, 0, 0, 0, 0, 0, 25, 50, 100],
+                    color: '#52B4E0'
+                },{
+                    name: 'Biofuels',
+                    data: [0, 25, 50, 50, 50, 100, 100, 100, 100, 100],
+                    color: '#207334'
+                },{
+                    name: 'Other',
+                    data: [100, 100, 100, 50, 100, 100, 100, 100, 100, 100],
+                    color: '#A0A0A1'
+                },{
+                    name: 'Jet Fuel',
+                    data: [300, 300, 300, 100, 300, 300, 300, 300, 300, 300],
+                    color: '#46524F'
+                },{
+                    name: 'Diesel',
+                    data: [700, 700, 700, 600, 700, 700, 700, 700, 700, 700],
+                    color: '#9D4E1D'
+                },{
+                    name: 'Gasoline',
+                    data: [1300, 1300, 1300, 1200, 1300, 1100, 1000, 900, 800, 600],
+                    color: '#EA751F'
+                }]
+            });
+            break;
+            case 'residential':
+            figureR4.update({
+                series: [{
+                    name: 'Other',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    color: '#A0A0A1'
+                },{
+                    name: 'Biofuels',
+                    data: [100, 200, 100, 100, 100, 100, 100, 120, 100, 100],
+                    color: '#1D7131'
+                },{
+                    name: 'RPPs and NGLs',
+                    data: [100, 200, 100, 100, 50, 25, 25, 20, 15, 20],
+                    color: '#ED789C'
+                },{
+                    name: 'Natural Gas',
+                    data: [600, 700, 600, 800, 700, 650, 600, 550, 525, 525],
+                    color: '#7C1933'
+                },{
+                    name: 'Electricity',
+                    data: [500, 600, 600, 700, 700, 750, 775, 800, 850, 850],
+                    color: '#E4445E'
+                },{
+                    name: 'Diesel',
+                    data: [0],
+                    color: '#9D4E1D'
+                },{ 
+                    name: 'Gasoline',
+                    data: [0],
+                    color: '#EA751F'
+                }]
+            });
+            break;
+    }
+}
+
+select.addEventListener('change', getType, false);
+
+Highcharts.chart('figure-r-5', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'Primary Demand Gradually Declines and Renewables Account For a Larger Share in the Evolving Scenario'
+    },
+    xAxis: {
+        categories: ['2005', '2010', '2015', '2020', '2025', '2030', '2035', '2040', '2045', '2050'],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'PJ'
+        }
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                enabled: false
+            }
+        }
+    },
+    series: [{
+        name: 'Renewables',
+        data: [400, 400, 400, 400, 400, 400, 400, 400, 500, 500],
+        color: '#1D7131'
+    },{
+        name: 'Nuclear',
+        data: [500, 500, 500, 500, 500, 500, 500, 500, 500, 500],
+        color: '#6F2F81'
+    },{
+        name: 'Hydro',
+        data: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
+        color: '#52B4E0'
+    },{
+        name: 'Natural Gas',
+        data: [4000, 4000, 5000, 4000, 4000, 4000, 4000, 4000, 4000, 4000],
+        color: '#7D1933'
+    },{
+        name: 'RPPs and NGLs',
+        data: [5000, 4000, 4500, 4000, 4500, 4000, 3000, 2500, 2000, 2000],
+        color: '#F1919D'
+    },{
+        name: 'Coal',
+        data: [1100, 1000, 800, 600, 100, 50, 25, 25, 25, 25],
+        color: '#46524F'
+    },{
+        type: 'spline',
+        name: 'Total - Reference Scenario',
+        data: [13000, 12100, 13800, 13000, 14000, 14000, 14200, 14500, 15000, 15200],
+        color: '#1D375A'
+    }]
+});
+
