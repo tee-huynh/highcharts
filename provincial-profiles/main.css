@@ -1,0 +1,15 @@
+
+#navbar {
+    overflow: hidden;
+    z-index: 1;
+}
+
+.sticky {
+    position: fixed;
+    top: -25;
+    width: 1140px;
+}
+
+.sticky + .content {
+    padding-top: 112px;
+}
